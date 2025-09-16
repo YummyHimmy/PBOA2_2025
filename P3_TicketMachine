@@ -1,0 +1,64 @@
+/**
+ * Write a description of class TicketMachine here.
+ *
+ * @Yasmina
+ * @09_09_2025
+ */
+public class TicketMachine
+{
+    // instance variables - replace the example below with your own
+    private int price; 
+    
+    private int balance;
+    
+    private int total;
+
+    /**
+     * Constructor for objects of class TicketMachine
+     */
+    public TicketMachine(int cost)
+    {
+        // initialise instance variables
+        price = cost;
+        balance = 0;
+        total = 0;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
+    
+    public int getBalance()
+    {
+        return balance;
+    }
+    
+    public void insertMoney(int amount)
+    {
+        if(amount > 0) {
+        balance = balance + amount;
+        }
+        else {
+        System.out.println("Use a positive amount rather than: " + amount);
+        }
+    }
+    
+    public void printTicket() 
+    {   
+        if (balance >= price ) {
+        System.out.println("################");
+        System.out.println("#The BlueJ Line#");
+        System.out.println("#    Ticket    #");
+        System.out.println(price + "cents");
+        System.out.println("################");
+        System.out.println();
+        
+        total = total + balance;
+        balance = 0;
+        }
+        else {
+            System.out.println("You must insert at least: " + (price - balance) + " cents.");
+        }
+    }
+}
