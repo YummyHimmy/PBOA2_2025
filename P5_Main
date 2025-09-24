@@ -1,0 +1,96 @@
+/**
+ * Write a description of class Dosen here.
+ *
+ * @author yasmina
+ * @version 23-09-2025
+ */
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+
+        // Dosen
+        Dosen d1 = new Dosen("Fajar Baskoro", "123456");
+        Dosen d2 = new Dosen("Sarwosri", "243567");
+        Dosen d3 = new Dosen("Arya Yudhi Wijaya", "125367");
+        Dosen d4 = new Dosen("Ilham Gurat Adilion", "987615");
+        Dosen d5 = new Dosen("Royyana Muslim Ijtihadie", "977615");
+        Dosen d6 = new Dosen("Aldinata Rizky Revanda", "587615");
+        Dosen d7 = new Dosen("Rully Soelaiman", "613257");
+        Dosen d8 = new Dosen("Nanik Suciati", "442314");
+        Dosen d9 = new Dosen("Dini Adni Navastara", "661289");
+        Dosen d10 = new Dosen("Imam Mustafa Kamal", "221342");
+        Dosen d11 = new Dosen("Hilmi Muchtar","771627");
+        Dosen d12 = new Dosen("Victor Hariadi","871828");
+        Dosen d13 = new Dosen("Irfan Subakti","997158");
+        Dosen d14 = new Dosen("Adatus Solichah", "714231");
+        Dosen d15 = new Dosen("Ary Mazharuddin", "112213");
+        Dosen d16 = new Dosen("Hudan Studiawan", "189913");
+
+        // Mata Kuliah
+        MataKuliah m1 = new MataKuliah("IF01", "Pemrograman Berorientasi Objek", d1);
+        MataKuliah m2 = new MataKuliah("IF11", "Pemrograman Berorientasi Objek", d7);
+        MataKuliah m3 = new MataKuliah("IF02", "Matematika Diskrit", d4);
+        MataKuliah m4 = new MataKuliah("IF12", "Matematika Diskrit", d11);
+        MataKuliah m5 = new MataKuliah("IF03", "Teori Graf", d3);
+        MataKuliah m6 = new MataKuliah("IF13", "Teori Graf", d12);
+        MataKuliah m7 = new MataKuliah("IF04", "Pemrograman Web", d1);
+        MataKuliah m8 = new MataKuliah("IF14", "Pemrograman Web", d13);
+        MataKuliah m9 = new MataKuliah("IF05", "Konsep Pengembangan Perangkat Lunak", d2);
+        MataKuliah m10 = new MataKuliah("IF15", "Konsep Pengembangan Perangkat Lunak", d14);
+        MataKuliah m11 = new MataKuliah("IF06", "Konsep Kecerdasan Artifisial", d6);
+        MataKuliah m12 = new MataKuliah("IF16", "Konsep Kecerdasan Artifisial", d8);
+        MataKuliah m13 = new MataKuliah("IF26", "Konsep Kecerdasan Artifisial", d9);
+        MataKuliah m14 = new MataKuliah("IF36", "Konsep Kecerdasan Artifisial", d10);
+        MataKuliah m15 = new MataKuliah("IF07", "Jaringan Komputer", d5);
+        MataKuliah m16 = new MataKuliah("IF17", "Jaringan Komputer", d15);
+        MataKuliah m17 = new MataKuliah("IF27", "Jaringan Komputer", d16);
+
+        MataKuliah[] ListMK = { m1, m2, m3, m4, m5, m6, m7, m8, 
+            m9, m10, m11, m12, m13, m14, m15, m16, m17};
+
+        // Input Data
+        System.out.print("Nama: ");
+        String nama = sc.nextLine();
+        System.out.print("NRP: ");
+        String nrp = sc.nextLine();
+
+        Mahasiswa mhs = new Mahasiswa(nama, nrp);
+
+        // Pemilihan MK
+        System.out.println("\nDaftar MK yang tersedia:");
+        for (int i = 0; i < ListMK.length; i++) {
+            System.out.println((i + 1) + ". " + ListMK[i].getNama()
+                    + " | Dosen: " + ListMK[i].getDosen().getNama());
+        }
+
+        System.out.print("\nJumlah MK yang ingin diambil : ");
+        int jumlah = sc.nextInt();
+
+        if (jumlah > 7) {
+            System.out.println("Terlalu Banyak!");
+            jumlah = 7;
+        }
+
+        for (int i = 0; i < jumlah; i++) {
+            System.out.print("Pilih nomor MK ke " + (i + 1) + ": ");
+            int pilihan = sc.nextInt();
+            if (pilihan >= 1 && pilihan <= ListMK.length) {
+                mhs.tambahMataKuliah(ListMK[pilihan - 1]);
+            } else {
+                System.out.println("Tidak valid!");
+            }
+        }
+
+
+        // Keluaran
+        System.out.println("\n||========================================================||");
+        mhs.tampilkanFRS();
+        System.out.println("||========================================================||");
+
+        sc.close();
+    }
+}
