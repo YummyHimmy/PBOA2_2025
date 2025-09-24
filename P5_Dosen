@@ -1,0 +1,36 @@
+/**
+ * Write a description of class Dosen here.
+ *
+ * @author yasmina
+ * @version 23-09-2025
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Dosen {
+    private String nama;
+    private String nidn;
+    private List<MataKuliah> daftarMataKuliah;
+
+    public Dosen(String nama, String nip) {
+        this.nama = nama;
+        this.nidn = nidn;
+        this.daftarMataKuliah = new ArrayList<>();
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void tambahMataKuliah(MataKuliah mk) {
+        daftarMataKuliah.add(mk);
+    }
+
+    public void tampilkanMataKuliah() {
+        System.out.println("Dosen: " + nama + " (" + nidn + ")");
+        for (MataKuliah mk : daftarMataKuliah) {
+            System.out.println("- " + mk.getNama() + " (" + mk.getKode() + ")");
+        }
+    }
+}
