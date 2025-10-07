@@ -1,0 +1,52 @@
+
+/**
+ * Write a description of class SupportSystem here.
+ *
+ * @yasmina
+ * @07-10-25
+ */
+public class SupportSystem {
+    private InputReader reader;
+    private Responder responder;
+
+    public SupportSystem() {
+        reader = new InputReader();
+        responder = new Responder();
+    }
+
+    public void start() {
+        boolean finished = false;
+        printWelcome();
+
+        while (!finished) {
+            String input = reader.getInput();
+
+            if (input.trim().equalsIgnoreCase("bye")) {
+                finished = true;
+            } 
+            else {
+                String response = responder.generateResponse(input);
+                System.out.println(response);
+            }
+        }
+
+        printGoodbye();
+    }
+
+    private void printWelcome() {
+        System.out.println("Selamat datang di Sistem Dukungan Teknis FRS.");
+        System.out.println();
+        System.out.println("Tolong jelaskan permasalahan anda.");
+        System.out.println("Ketik 'bye' untuk mengakhiri sesi.");
+    }
+
+    private void printGoodbye() {
+        System.out.println("Kami berharap anda puas dengan pelayanan kami.");
+        System.out.println("Terima kasih :>");
+    }
+
+    public static void main(String[] args) {
+        SupportSystem system = new SupportSystem();
+        system.start();
+    }
+}
