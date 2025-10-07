@@ -1,0 +1,21 @@
+
+/**
+ * Write a description of class InputReader here.
+ *
+ * @yasmina
+ * @07-10-25
+ */
+import java.util.Scanner;
+
+public class InputReader {
+    private Scanner scanner;
+
+    public InputReader() {
+        scanner = new Scanner(System.in);
+    }
+
+    public String getInput() {
+        System.out.print(">");
+        return scanner.nextLine();
+    }
+}
