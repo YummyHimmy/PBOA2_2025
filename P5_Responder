@@ -1,0 +1,51 @@
+
+/**
+ * Write a description of class Responder here.
+ *
+ * @yasmina
+ * @07-10-25
+ */
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Random;
+
+public class Responder {
+    private Map<String, String> responses;
+    private Random random;
+
+    public Responder() {
+        responses = new HashMap<>();
+        random = new Random();
+
+        responses.put("error", "Cobalah reload situs SIAKAD.");
+        responses.put("eror", "Cobalah reload situs SIAKAD.");
+        responses.put("kosong", "Cobalah reload situs SIAKAD.");
+        responses.put("tolong", "Apa yang bisa saya bantu?");
+        responses.put("captcha", "Jika gambar CAPTCHA tidak ada cobalah reload situs");
+        responses.put("slow", "Sudahkah anda memeriksa koneksi internet anda?");
+        responses.put("lambat", "Sudahkah anda memeriksa koneksi internet anda?");
+        responses.put("lama", "Sudahkah anda memeriksa koneksi internet anda?");
+        responses.put("loading", "Sudahkah anda memeriksa koneksi internet anda?");
+        responses.put("penuh", "Isilah form permintaan kelas tambahan.");
+        responses.put("merah", "Artinya kelas yang diambil diperuntukkan untuk tahun selanjutnya.");
+        responses.put("masih", "Silakan menghubungi nomor 08001122334455");
+    }
+
+    public String generateResponse(String userInput) {
+        String[] words = userInput.toLowerCase().split("\\s+");
+        for (String w : words) {
+            if (responses.containsKey(w)) {
+                return responses.get(w);
+            }
+        }
+
+        String[] generic = {
+            "Coba jelaskan lebih rinci.",
+            "Saya belum mengerti, bisa ulangi?",
+            "Bisakah Anda memberi detail lebih lanjut?",
+            "Tolong jelaskan dengan detail."
+        };
+
+        return generic[random.nextInt(generic.length)];
+    }
+}
